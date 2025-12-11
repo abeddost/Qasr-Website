@@ -64,3 +64,6 @@ The slider now includes:
 
 All animations are working - you just need to update the image URLs with different product images.
 
+
+
+

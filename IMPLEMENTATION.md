@@ -131,3 +131,6 @@ qasr-website/
 - ✅ Google Maps configured (needs API key)
 - ✅ Social media links updated (Instagram, TikTok)
 
+
+
+

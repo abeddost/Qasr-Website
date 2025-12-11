@@ -23,7 +23,7 @@ export default function RelatedProductsSlider({ products }: RelatedProductsSlide
     const updateItemsPerView = () => {
       if (window.innerWidth < 640) {
         setItemsPerView(1); // Mobile: 1 item
-        setGap(12);
+        setGap(0);
       } else if (window.innerWidth < 1024) {
         setItemsPerView(2); // Tablet: 2 items
         setGap(16);
@@ -42,7 +42,6 @@ export default function RelatedProductsSlider({ products }: RelatedProductsSlide
   // Calculate total pages and max index
   const totalPages = Math.ceil(products.length / itemsPerView);
   const maxIndex = Math.max(0, totalPages - 1);
-  const pageWidth = products.length ? itemsPerView * (100 / products.length) : 100;
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -95,7 +94,8 @@ export default function RelatedProductsSlider({ products }: RelatedProductsSlide
   if (products.length === 0) return null;
 
   // Move by one page (itemsPerView items) on each step
-  const translateX = -(currentIndex * containerWidth);
+  const pageWidth = itemsPerView === 1 ? containerWidth + gap : containerWidth;
+  const translateX = -(currentIndex * pageWidth);
   const itemWidth = `calc((100% - ${(itemsPerView - 1) * gap}px) / ${itemsPerView})`;
 
   return (

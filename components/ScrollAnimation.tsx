@@ -67,3 +67,6 @@ export default function ScrollAnimation({
     </div>
   );
 }
+
+
+

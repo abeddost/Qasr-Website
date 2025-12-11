@@ -6,3 +6,6 @@ export const homeMetadata: Metadata = {
   description: "Qasr Möbelhaus - Elegante Möbel, moderne Sofagarnituren und Luxus-Garnituren. Hochwertige Möbel aus Bischofsheim für Ihr Zuhause.",
 };
 
+
+
+

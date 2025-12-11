@@ -74,3 +74,6 @@ export const translations = {
     copyright: "Alle Rechte vorbehalten.",
   },
 } as const;
+
+
+

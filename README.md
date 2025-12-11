@@ -80,3 +80,6 @@ npm start
 
 All rights reserved © 2025 Qasr Möbelhaus
 
+
+
+
