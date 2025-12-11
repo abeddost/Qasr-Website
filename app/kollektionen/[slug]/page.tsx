@@ -15,6 +15,7 @@ interface ProductPageProps {
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const product = getProductBySlug(params.slug);
+  const baseUrl = "https://qasrmobelhaus.com";
   
   if (!product) {
     return {
@@ -22,9 +23,38 @@ export async function generateMetadata({ params }: ProductPageProps) {
     };
   }
 
+  const productUrl = `${baseUrl}/kollektionen/${params.slug}`;
+  const productImage = product.images[0] || product.image;
+
   return {
-    title: `${product.name} - Qasr Möbelhaus`,
-    description: product.description,
+    title: `${product.name} - ${product.category} | Qasr Möbelhaus`,
+    description: product.fullDescription || product.description,
+    keywords: `${product.name}, ${product.category}, Sofagarnitur, Möbel Bischofsheim, Luxusmöbel`,
+    openGraph: {
+      title: `${product.name} - Qasr Möbelhaus`,
+      description: product.description,
+      type: "website",
+      locale: "de_DE",
+      url: productUrl,
+      siteName: "Qasr Möbelhaus",
+      images: [
+        {
+          url: productImage,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} - Qasr Möbelhaus`,
+      description: product.description,
+      images: [productImage],
+    },
+    alternates: {
+      canonical: productUrl,
+    },
   };
 }
 
@@ -37,8 +67,48 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   const relatedProducts = getRelatedProducts(params.slug, 4);
 
+  // Product structured data (JSON-LD)
+  const productStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.fullDescription || product.description,
+    image: product.images,
+    brand: {
+      "@type": "Brand",
+      name: "Qasr Möbelhaus",
+    },
+    category: product.category,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR",
+      seller: {
+        "@type": "Organization",
+        name: "Qasr Möbelhaus",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Industriestraße 17",
+          addressLocality: "Bischofsheim",
+          postalCode: "65474",
+          addressCountry: "DE",
+        },
+        telephone: COMPANY_INFO.phone,
+        email: COMPANY_INFO.email,
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      {/* Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productStructuredData),
+        }}
+      />
+      
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-gray-600">

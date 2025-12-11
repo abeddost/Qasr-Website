@@ -20,6 +20,15 @@ export const metadata: Metadata = {
     description: "Elegante Möbel, moderne Sofagarnituren und Luxus-Garnituren",
     type: "website",
     locale: "de_DE",
+    siteName: COMPANY_INFO.name,
+    images: [
+      {
+        url: "https://qasrmobelhaus.com/logo.png",
+        width: 800,
+        height: 600,
+        alt: "Qasr Möbelhaus Logo",
+      },
+    ],
   },
   robots: {
     index: true,
