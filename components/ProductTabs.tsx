@@ -57,3 +57,4 @@ export default function ProductTabs({ fullDescription, additionalInfo }: Product
 
 
 
+
