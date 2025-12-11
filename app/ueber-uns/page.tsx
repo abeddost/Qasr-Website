@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Über Uns - Qasr Möbelhaus",
-  description: "Erfahren Sie mehr über Qasr Möbelhaus - 25 Jahre Erfahrung in der Möbelherstellung.",
+  description: "Erfahren Sie mehr über Qasr Möbelhaus.",
 };
 
 export default function AboutPage() {
@@ -94,4 +94,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

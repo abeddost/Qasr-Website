@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description: "Qasr Möbelhaus - Elegante Möbel, moderne Sofagarnituren und Luxus-Garnituren. Hochwertige Möbel aus Bischofsheim für Ihr Zuhause.",
   keywords: "Möbel, Sofas, Sessel, Möbelhaus, Bischofsheim, Einrichtung, Wohnzimmer, Luxus Möbel",
   authors: [{ name: COMPANY_INFO.name }],
+  icons: {
+    icon: "/logo.png",
+  },
   openGraph: {
     title: `${COMPANY_INFO.name} - Möbelhaus Bischofsheim`,
     description: "Elegante Möbel, moderne Sofagarnituren und Luxus-Garnituren",
