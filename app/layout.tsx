@@ -3,15 +3,19 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { COMPANY_INFO } from "@/lib/constants";
+import { COMPANY_INFO, SOCIAL_LINKS, GOOGLE_MAPS_CONFIG } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://qasrmobelhaus.com"),
   title: `${COMPANY_INFO.name} - Möbelhaus Bischofsheim`,
   description: "Qasr Möbelhaus - Elegante Möbel, moderne Sofagarnituren und Luxus-Garnituren. Hochwertige Möbel aus Bischofsheim für Ihr Zuhause.",
   keywords: "Möbel, Sofas, Sessel, Möbelhaus, Bischofsheim, Einrichtung, Wohnzimmer, Luxus Möbel",
   authors: [{ name: COMPANY_INFO.name }],
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/logo.png",
   },
@@ -53,7 +57,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FurnitureStore",
+              "@id": "https://qasrmobelhaus.com/#furniture-store",
               name: COMPANY_INFO.name,
+              url: "https://qasrmobelhaus.com",
+              logo: "https://qasrmobelhaus.com/logo.png",
+              image: "https://qasrmobelhaus.com/logo.png",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Industriestraße 17",
@@ -63,7 +71,12 @@ export default function RootLayout({
               },
               telephone: COMPANY_INFO.phone,
               email: COMPANY_INFO.email,
-              url: "https://qasrmobelhaus.com",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: GOOGLE_MAPS_CONFIG.lat,
+                longitude: GOOGLE_MAPS_CONFIG.lng,
+              },
+              sameAs: [SOCIAL_LINKS.instagram, SOCIAL_LINKS.tiktok],
             }),
           }}
         />
@@ -71,6 +84,5 @@ export default function RootLayout({
     </html>
   );
 }
-
 
 

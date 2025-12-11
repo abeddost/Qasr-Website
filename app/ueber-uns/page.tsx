@@ -3,9 +3,36 @@ import Image from "next/image";
 
 import { Metadata } from "next";
 
+const baseUrl = "https://qasrmobelhaus.com";
+
 export const metadata: Metadata = {
   title: "Über Uns - Qasr Möbelhaus",
   description: "Erfahren Sie mehr über Qasr Möbelhaus.",
+  openGraph: {
+    title: "Über Uns - Qasr Möbelhaus",
+    description: "Erfahren Sie mehr über Qasr Möbelhaus.",
+    type: "website",
+    locale: "de_DE",
+    url: `${baseUrl}/ueber-uns`,
+    siteName: "Qasr Möbelhaus",
+    images: [
+      {
+        url: `${baseUrl}/logo.png`,
+        width: 800,
+        height: 600,
+        alt: "Qasr Möbelhaus Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Über Uns - Qasr Möbelhaus",
+    description: "Erfahren Sie mehr über Qasr Möbelhaus.",
+    images: [`${baseUrl}/logo.png`],
+  },
+  alternates: {
+    canonical: `${baseUrl}/ueber-uns`,
+  },
 };
 
 export default function AboutPage() {

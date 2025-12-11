@@ -66,6 +66,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   }
 
   const relatedProducts = getRelatedProducts(params.slug, 4);
+  const productUrl = `https://qasrmobelhaus.com/kollektionen/${params.slug}`;
 
   // Product structured data (JSON-LD)
   const productStructuredData = {
@@ -73,30 +74,39 @@ export default function ProductPage({ params }: ProductPageProps) {
     "@type": "Product",
     name: product.name,
     description: product.fullDescription || product.description,
+    sku: product.id,
     image: product.images,
+    url: productUrl,
     brand: {
       "@type": "Brand",
       name: "Qasr Möbelhaus",
     },
     category: product.category,
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      priceCurrency: "EUR",
-      seller: {
-        "@type": "Organization",
-        name: "Qasr Möbelhaus",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "Industriestraße 17",
-          addressLocality: "Bischofsheim",
-          postalCode: "65474",
-          addressCountry: "DE",
-        },
-        telephone: COMPANY_INFO.phone,
-        email: COMPANY_INFO.email,
+  };
+
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Startseite",
+        item: "https://qasrmobelhaus.com/",
       },
-    },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Kollektionen",
+        item: "https://qasrmobelhaus.com/kollektionen",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
   };
 
   return (
@@ -106,6 +116,13 @@ export default function ProductPage({ params }: ProductPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(productStructuredData),
+        }}
+      />
+      {/* Breadcrumbs Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData),
         }}
       />
       
@@ -209,4 +226,3 @@ export default function ProductPage({ params }: ProductPageProps) {
     </div>
   );
 }
-
