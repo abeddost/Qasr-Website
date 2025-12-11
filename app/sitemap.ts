@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next'
-import { COMPANY_INFO } from '@/lib/constants'
+import { BASE_URL, COMPANY_INFO } from '@/lib/constants'
 import { getAllProducts } from '@/lib/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://qasrmobelhaus.com'
   const currentDate = new Date()
 
   // Get all products for dynamic sitemap entries
@@ -12,25 +11,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: BASE_URL,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/kollektionen`,
+      url: `${BASE_URL}/kollektionen`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/ueber-uns`,
+      url: `${BASE_URL}/ueber-uns`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/kontakt`,
+      url: `${BASE_URL}/kontakt`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -39,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dynamic product pages
   const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `${baseUrl}/kollektionen/${product.slug}`,
+    url: `${BASE_URL}/kollektionen/${product.slug}`,
     lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -47,7 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...productPages]
 }
-
 
 
 

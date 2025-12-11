@@ -8,6 +8,8 @@ export const COMPANY_INFO = {
   country: "Deutschland",
 } as const;
 
+export const BASE_URL = "https://qasrmobelhaus.vercel.app";
+
 export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/qasrmobelhaus/",
   tiktok: "https://www.tiktok.com/@qasr.moebelhaus",

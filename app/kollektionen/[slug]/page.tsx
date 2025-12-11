@@ -5,7 +5,7 @@ import ProductImageGallery from "@/components/ProductImageGallery";
 import RelatedProductsSlider from "@/components/RelatedProductsSlider";
 import ProductShareButtons from "@/components/ProductShareButtons";
 import ProductTabs from "@/components/ProductTabs";
-import { COMPANY_INFO } from "@/lib/constants";
+import { BASE_URL, COMPANY_INFO } from "@/lib/constants";
 
 interface ProductPageProps {
   params: {
@@ -15,7 +15,6 @@ interface ProductPageProps {
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const product = getProductBySlug(params.slug);
-  const baseUrl = "https://qasrmobelhaus.com";
   
   if (!product) {
     return {
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     };
   }
 
-  const productUrl = `${baseUrl}/kollektionen/${params.slug}`;
+  const productUrl = `${BASE_URL}/kollektionen/${params.slug}`;
   const productImage = product.images[0] || product.image;
 
   return {
@@ -66,7 +65,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   }
 
   const relatedProducts = getRelatedProducts(params.slug, 4);
-  const productUrl = `https://qasrmobelhaus.com/kollektionen/${params.slug}`;
+  const productUrl = `${BASE_URL}/kollektionen/${params.slug}`;
 
   // Product structured data (JSON-LD)
   const productStructuredData = {
@@ -92,13 +91,13 @@ export default function ProductPage({ params }: ProductPageProps) {
         "@type": "ListItem",
         position: 1,
         name: "Startseite",
-        item: "https://qasrmobelhaus.com/",
+        item: `${BASE_URL}/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Kollektionen",
-        item: "https://qasrmobelhaus.com/kollektionen",
+        item: `${BASE_URL}/kollektionen`,
       },
       {
         "@type": "ListItem",

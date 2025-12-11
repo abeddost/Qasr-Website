@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import HomeContent from "@/components/HomeContent";
-import { COMPANY_INFO } from "@/lib/constants";
-
-const baseUrl = "https://qasrmobelhaus.com";
+import { BASE_URL, COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Qasr Möbelhaus - Elegante Möbel & Luxus Sofagarnituren in Bischofsheim",
@@ -14,11 +12,11 @@ export const metadata: Metadata = {
     description: "Entdecken Sie hochwertige Möbel, moderne Sofagarnituren und Luxus-Garnituren in Bischofsheim",
     type: "website",
     locale: "de_DE",
-    url: baseUrl,
+    url: BASE_URL,
     siteName: COMPANY_INFO.name,
     images: [
       {
-        url: `${baseUrl}/logo.png`,
+        url: `${BASE_URL}/logo.png`,
         width: 800,
         height: 600,
         alt: "Qasr Möbelhaus Logo",
@@ -29,10 +27,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Qasr Möbelhaus - Elegante Möbel & Luxus Sofagarnituren",
     description: "Entdecken Sie hochwertige Möbel, moderne Sofagarnituren und Luxus-Garnituren in Bischofsheim",
-    images: [`${baseUrl}/logo.png`],
+    images: [`${BASE_URL}/logo.png`],
   },
   alternates: {
-    canonical: baseUrl,
+    canonical: BASE_URL,
   },
 };
 

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import CollectionsContent from "@/components/CollectionsContent";
-
-const baseUrl = "https://qasrmobelhaus.com";
+import { BASE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Kollektionen - Qasr Möbelhaus | Sofagarnituren & Luxusmöbel",
@@ -12,11 +11,11 @@ export const metadata: Metadata = {
     description: "Entdecken Sie unsere exklusive Kollektion von Sofagarnituren, Moderne Gruppen, Luxus-Gruppen und Ecksofas",
     type: "website",
     locale: "de_DE",
-    url: `${baseUrl}/kollektionen`,
+    url: `${BASE_URL}/kollektionen`,
     siteName: "Qasr Möbelhaus",
     images: [
       {
-        url: `${baseUrl}/logo.png`,
+        url: `${BASE_URL}/logo.png`,
         width: 800,
         height: 600,
         alt: "Qasr Möbelhaus Kollektionen",
@@ -27,10 +26,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kollektionen - Qasr Möbelhaus",
     description: "Entdecken Sie unsere exklusive Kollektion von Sofagarnituren, Moderne Gruppen, Luxus-Gruppen und Ecksofas",
-    images: [`${baseUrl}/logo.png`],
+    images: [`${BASE_URL}/logo.png`],
   },
   alternates: {
-    canonical: `${baseUrl}/kollektionen`,
+    canonical: `${BASE_URL}/kollektionen`,
   },
 };
 

@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import ContactContent from "@/components/ContactContent";
-import { COMPANY_INFO } from "@/lib/constants";
-
-const baseUrl = "https://qasrmobelhaus.com";
+import { BASE_URL, COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Kontakt - Qasr Möbelhaus Bischofsheim | Beratung & Service",
@@ -13,11 +11,11 @@ export const metadata: Metadata = {
     description: "Kontaktieren Sie Qasr Möbelhaus in Bischofsheim. Wir beraten Sie gerne zu unseren Möbeln und Sofagarnituren",
     type: "website",
     locale: "de_DE",
-    url: `${baseUrl}/kontakt`,
+    url: `${BASE_URL}/kontakt`,
     siteName: "Qasr Möbelhaus",
     images: [
       {
-        url: `${baseUrl}/logo.png`,
+        url: `${BASE_URL}/logo.png`,
         width: 800,
         height: 600,
         alt: "Qasr Möbelhaus Kontakt",
@@ -28,10 +26,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kontakt - Qasr Möbelhaus",
     description: "Kontaktieren Sie Qasr Möbelhaus in Bischofsheim. Wir beraten Sie gerne zu unseren Möbeln und Sofagarnituren",
-    images: [`${baseUrl}/logo.png`],
+    images: [`${BASE_URL}/logo.png`],
   },
   alternates: {
-    canonical: `${baseUrl}/kontakt`,
+    canonical: `${BASE_URL}/kontakt`,
   },
 };
 

@@ -3,12 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { COMPANY_INFO, SOCIAL_LINKS, GOOGLE_MAPS_CONFIG } from "@/lib/constants";
+import { BASE_URL, COMPANY_INFO, SOCIAL_LINKS, GOOGLE_MAPS_CONFIG } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://qasrmobelhaus.com"),
+  metadataBase: new URL(BASE_URL),
   title: `${COMPANY_INFO.name} - Möbelhaus Bischofsheim`,
   description: "Qasr Möbelhaus - Elegante Möbel, moderne Sofagarnituren und Luxus-Garnituren. Hochwertige Möbel aus Bischofsheim für Ihr Zuhause.",
   keywords: "Möbel, Sofas, Sessel, Möbelhaus, Bischofsheim, Einrichtung, Wohnzimmer, Luxus Möbel",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: COMPANY_INFO.name,
     images: [
       {
-        url: "https://qasrmobelhaus.com/logo.png",
+        url: `${BASE_URL}/logo.png`,
         width: 800,
         height: 600,
         alt: "Qasr Möbelhaus Logo",
@@ -57,11 +57,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FurnitureStore",
-              "@id": "https://qasrmobelhaus.com/#furniture-store",
+              "@id": `${BASE_URL}/#furniture-store`,
               name: COMPANY_INFO.name,
-              url: "https://qasrmobelhaus.com",
-              logo: "https://qasrmobelhaus.com/logo.png",
-              image: "https://qasrmobelhaus.com/logo.png",
+              url: BASE_URL,
+              logo: `${BASE_URL}/logo.png`,
+              image: `${BASE_URL}/logo.png`,
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Industriestraße 17",
@@ -84,5 +84,4 @@ export default function RootLayout({
     </html>
   );
 }
-
 

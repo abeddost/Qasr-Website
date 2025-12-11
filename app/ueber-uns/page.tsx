@@ -2,8 +2,7 @@ import { translations } from "@/lib/translations";
 import Image from "next/image";
 
 import { Metadata } from "next";
-
-const baseUrl = "https://qasrmobelhaus.com";
+import { BASE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Über Uns - Qasr Möbelhaus",
@@ -13,11 +12,11 @@ export const metadata: Metadata = {
     description: "Erfahren Sie mehr über Qasr Möbelhaus.",
     type: "website",
     locale: "de_DE",
-    url: `${baseUrl}/ueber-uns`,
+    url: `${BASE_URL}/ueber-uns`,
     siteName: "Qasr Möbelhaus",
     images: [
       {
-        url: `${baseUrl}/logo.png`,
+        url: `${BASE_URL}/logo.png`,
         width: 800,
         height: 600,
         alt: "Qasr Möbelhaus Logo",
@@ -28,10 +27,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Über Uns - Qasr Möbelhaus",
     description: "Erfahren Sie mehr über Qasr Möbelhaus.",
-    images: [`${baseUrl}/logo.png`],
+    images: [`${BASE_URL}/logo.png`],
   },
   alternates: {
-    canonical: `${baseUrl}/ueber-uns`,
+    canonical: `${BASE_URL}/ueber-uns`,
   },
 };
 
