@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProductBySlug, getRelatedProducts } from "@/lib/products";
 import ProductImageGallery from "@/components/ProductImageGallery";
-import ProductGrid from "@/components/ProductGrid";
+import RelatedProductsSlider from "@/components/RelatedProductsSlider";
 import ProductShareButtons from "@/components/ProductShareButtons";
 import ProductTabs from "@/components/ProductTabs";
 import { COMPANY_INFO } from "@/lib/constants";
@@ -132,7 +132,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         {relatedProducts.length > 0 && (
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Ähnliche Produkte</h2>
-            <ProductGrid products={relatedProducts} />
+            <RelatedProductsSlider products={relatedProducts} />
           </div>
         )}
       </div>

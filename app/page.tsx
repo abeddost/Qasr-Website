@@ -1,20 +1,14 @@
 "use client";
 
 import HeroSlider from "@/components/HeroSlider";
-import ProductGrid from "@/components/ProductGrid";
+import RelatedProductsSlider from "@/components/RelatedProductsSlider";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { translations } from "@/lib/translations";
 import { getAllProducts, getProductBySlug } from "@/lib/products";
 import Image from "next/image";
 
-// Get featured products from centralized data
+// Get all products for the slider
 const allProducts = getAllProducts();
-const featuredProducts = [
-  allProducts.find((p) => p.slug === "angel"),
-  allProducts.find((p) => p.slug === "efes"),
-  allProducts.find((p) => p.slug === "lucas"),
-  allProducts.find((p) => p.slug === "luna"),
-].filter((p) => p !== undefined) as typeof allProducts;
 
 // Get Avanos product for featured section
 const avanosProduct = getProductBySlug("avanos");
@@ -60,48 +54,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Categories Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <ScrollAnimation animationType="fadeInUp">
-            <div className="text-center mb-12">
-              <p className="text-sm text-gray-500 mb-2">Neue Saison</p>
-              <p className="text-sm font-semibold text-gray-700 mb-4">
-                {translations.categories.title}
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                {translations.categories.heading}
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto">
-                {translations.categories.description}
-              </p>
-            </div>
-          </ScrollAnimation>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-16 bg-gray-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-4">{translations.about.title}</h3>
-            <div className="space-y-6">
-              <div>
-                <p className="text-sm text-gray-400 mb-2">
-                  {translations.about.subtitle}
-                </p>
-                <h4 className="text-xl font-semibold mb-4">
-                  {translations.about.heading}
-                </h4>
-                <p className="text-gray-300 leading-relaxed">
-                  {translations.about.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Collections Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -134,7 +86,7 @@ export default function Home() {
             </div>
           </ScrollAnimation>
           <ScrollAnimation animationType="zoomIn" delay={200}>
-            <ProductGrid products={featuredProducts} />
+            <RelatedProductsSlider products={allProducts} />
           </ScrollAnimation>
         </div>
       </section>

@@ -26,13 +26,14 @@ export default function ProductImageGallery({ images, productName }: ProductImag
   return (
     <div className="w-full">
       {/* Main Image */}
-      <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] mb-4 bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] mb-4 bg-gray-100 rounded-lg overflow-hidden">
         <Image
           src={images[selectedImageIndex]}
           alt={`${productName} - Bild ${selectedImageIndex + 1}`}
           fill
           className="object-contain"
           priority={selectedImageIndex === 0}
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
         
         {/* Navigation Arrows */}
