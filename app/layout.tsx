@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className={inter.className}>
+    <html lang="de" className="min-h-full">
+      <body className={`${inter.className} min-h-full`}>
         <Header />
         <main>{children}</main>
         <Footer />
@@ -59,4 +59,3 @@ export default function RootLayout({
     </html>
   );
 }
-

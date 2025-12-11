@@ -18,9 +18,9 @@ export default function ProductGrid({ products }: ProductGridProps) {
           <Link
             key={product.id}
             href={product.href}
-            className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+            className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all border border-[rgba(205,163,73,0.25)]"
           >
-            <div className="relative h-48 w-full overflow-hidden bg-gray-50">
+            <div className="relative h-48 w-full overflow-hidden bg-brand-cream">
               {/* Default Image */}
               <Image
                 src={product.image}
@@ -39,8 +39,10 @@ export default function ProductGrid({ products }: ProductGridProps) {
               )}
             </div>
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
-              <span className="text-sm text-gray-600">{product.category}</span>
+              <h3 className="text-xl font-semibold text-brand-charcoal mb-2 underline-gold text-animate">
+                {product.name}
+              </h3>
+              <span className="text-sm text-brand-charcoal/70 text-animate">{product.category}</span>
             </div>
           </Link>
         );
@@ -48,4 +50,3 @@ export default function ProductGrid({ products }: ProductGridProps) {
     </div>
   );
 }
-

@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import ProductGrid from "@/components/ProductGrid";
 import { translations } from "@/lib/translations";
-import { getAllProducts, getProductsByCategory, categoryMap, type Product } from "@/lib/products";
+import { getAllProducts, getProductsByCategory, type Product } from "@/lib/products";
 
 const PRODUCTS_PER_PAGE = 12;
 
-export default function CollectionsPage() {
+function CollectionsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<"modern" | "luxury" | "corner" | "all">("all");
@@ -59,53 +59,53 @@ export default function CollectionsPage() {
   const totalPages = Math.ceil(allFilteredProducts.length / PRODUCTS_PER_PAGE);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-brand-cream py-12">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-brand-charcoal mb-4 underline-gold">
             {translations.nav.collections}
           </h1>
-          <p className="text-gray-600">{translations.collections.subtitle}</p>
+          <p className="text-brand-charcoal/80 text-animate">{translations.collections.subtitle}</p>
         </div>
 
         {/* Category Filter Buttons */}
         <div className="mb-8 flex flex-wrap gap-4">
           <button
             onClick={() => handleCategoryClick("all")}
-            className={`px-6 py-3 rounded-md font-medium transition-colors ${
+            className={`px-6 py-3 rounded-md font-semibold transition-all text-animate ${
               selectedCategory === "all"
-                ? "bg-gray-900 text-white"
-                : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
+                ? "btn-gold shadow"
+                : "pill-gold"
             }`}
           >
             Alle Kategorien
           </button>
           <button
             onClick={() => handleCategoryClick("modern")}
-            className={`px-6 py-3 rounded-md font-medium transition-colors ${
+            className={`px-6 py-3 rounded-md font-semibold transition-all text-animate ${
               selectedCategory === "modern"
-                ? "bg-gray-900 text-white"
-                : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
+                ? "btn-gold shadow"
+                : "pill-gold"
             }`}
           >
             Moderne Gruppen
           </button>
           <button
             onClick={() => handleCategoryClick("luxury")}
-            className={`px-6 py-3 rounded-md font-medium transition-colors ${
+            className={`px-6 py-3 rounded-md font-semibold transition-all text-animate ${
               selectedCategory === "luxury"
-                ? "bg-gray-900 text-white"
-                : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
+                ? "btn-gold shadow"
+                : "pill-gold"
             }`}
           >
             Luxus-Gruppen
           </button>
           <button
             onClick={() => handleCategoryClick("corner")}
-            className={`px-6 py-3 rounded-md font-medium transition-colors ${
+            className={`px-6 py-3 rounded-md font-semibold transition-all text-animate ${
               selectedCategory === "corner"
-                ? "bg-gray-900 text-white"
-                : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
+                ? "btn-gold shadow"
+                : "pill-gold"
             }`}
           >
             ECKSOFAS
@@ -124,7 +124,7 @@ export default function CollectionsPage() {
                 <li>
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
-                    className="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="px-4 py-2 rounded-md bg-white border border-[rgba(205,163,73,0.35)] text-brand-charcoal hover:bg-brand-cream transition-all text-animate"
                     aria-label="Vorherige Seite"
                   >
                     ←
@@ -137,7 +137,7 @@ export default function CollectionsPage() {
                 <li key={page}>
                   {page === currentPage ? (
                     <span
-                      className="px-4 py-2 rounded-md bg-gray-900 text-white font-medium"
+                      className="px-4 py-2 rounded-md bg-brand-gold text-brand-charcoal font-semibold shadow text-animate"
                       aria-current="page"
                     >
                       {page}
@@ -145,7 +145,7 @@ export default function CollectionsPage() {
                   ) : (
                     <button
                       onClick={() => handlePageChange(page)}
-                      className="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="px-4 py-2 rounded-md bg-white border border-[rgba(205,163,73,0.35)] text-brand-charcoal hover:bg-brand-cream transition-all text-animate"
                       aria-label={`Seite ${page}`}
                     >
                       {page}
@@ -159,7 +159,7 @@ export default function CollectionsPage() {
                 <li>
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
-                    className="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="px-4 py-2 rounded-md bg-white border border-[rgba(205,163,73,0.35)] text-brand-charcoal hover:bg-brand-cream transition-all text-animate"
                     aria-label="Nächste Seite"
                   >
                     →
@@ -174,3 +174,10 @@ export default function CollectionsPage() {
   );
 }
 
+export default function CollectionsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-brand-charcoal">Laden...</div>}>
+      <CollectionsContent />
+    </Suspense>
+  );
+}

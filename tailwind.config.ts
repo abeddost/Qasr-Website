@@ -11,10 +11,16 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand: {
+          gold: "#cda349",
+          "gold-dark": "#b88728",
+          charcoal: "#19120c",
+          cream: "#f7f1e6",
+          sand: "#efe3d0",
+        },
       },
     },
   },
   plugins: [],
 };
 export default config;
-

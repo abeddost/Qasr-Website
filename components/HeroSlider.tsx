@@ -105,7 +105,7 @@ export default function HeroSlider() {
                 }`}
               >
                 <p
-                  className={`text-lg md:text-xl mb-2 transition-all duration-700 delay-500 ${
+                  className={`text-lg md:text-xl mb-2 transition-all duration-700 delay-500 underline-gold ${
                     index === currentSlide
                       ? "opacity-100 translate-x-0"
                       : "opacity-0 -translate-x-8"
@@ -114,7 +114,7 @@ export default function HeroSlider() {
                   {slide.title}
                 </p>
                 <h2
-                  className={`text-3xl md:text-5xl font-bold mb-6 transition-all duration-700 delay-700 ${
+                  className={`text-3xl md:text-5xl font-bold mb-6 transition-all duration-700 delay-700 text-animate ${
                     index === currentSlide
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-8"
@@ -124,7 +124,7 @@ export default function HeroSlider() {
                 </h2>
                 <Link
                   href={slide.link}
-                  className={`inline-block bg-white text-gray-900 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all duration-500 delay-1000 ${
+                  className={`btn-gold px-8 py-3 transition-all duration-500 delay-1000 ${
                     index === currentSlide
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-8"
@@ -141,7 +141,7 @@ export default function HeroSlider() {
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-3 rounded-full transition-all z-20 backdrop-blur-sm"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-brand-charcoal border border-[rgba(205,163,73,0.4)] hover:bg-white p-3 rounded-full transition-all z-20 backdrop-blur-sm shadow-md"
         aria-label="Previous slide"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ export default function HeroSlider() {
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-3 rounded-full transition-all z-20 backdrop-blur-sm"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-brand-charcoal border border-[rgba(205,163,73,0.4)] hover:bg-white p-3 rounded-full transition-all z-20 backdrop-blur-sm shadow-md"
         aria-label="Next slide"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,7 +165,9 @@ export default function HeroSlider() {
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "w-8 bg-white" : "w-2 bg-white bg-opacity-50 hover:bg-opacity-75"
+              index === currentSlide
+                ? "w-8 bg-brand-gold shadow-sm"
+                : "w-2 bg-white/70 hover:bg-white"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -174,4 +176,3 @@ export default function HeroSlider() {
     </div>
   );
 }
-

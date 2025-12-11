@@ -14,25 +14,25 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-brand-charcoal text-[var(--brand-cream)] border-t border-[rgba(205,163,73,0.35)]">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
+            <h3 className="text-lg font-semibold mb-4 underline-gold">Kontakt</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <svg className="w-5 h-5 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-gray-300">{COMPANY_INFO.address}</span>
+                <span className="text-animate">{COMPANY_INFO.address}</span>
               </li>
               <li className="flex items-center gap-3">
                 <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href={`tel:${COMPANY_INFO.phone}`} className="text-gray-300 hover:text-white transition-colors">
+                <a href={`tel:${COMPANY_INFO.phone}`} className="text-animate hover:text-brand-gold transition-colors">
                   {COMPANY_INFO.phone}
                 </a>
               </li>
@@ -40,7 +40,7 @@ export default function Footer() {
                 <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href={`mailto:${COMPANY_INFO.email}`} className="text-gray-300 hover:text-white transition-colors">
+                <a href={`mailto:${COMPANY_INFO.email}`} className="text-animate hover:text-brand-gold transition-colors">
                   {COMPANY_INFO.email}
                 </a>
               </li>
@@ -49,13 +49,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{translations.footer.shortcuts}</h3>
+            <h3 className="text-lg font-semibold mb-4 underline-gold">{translations.footer.shortcuts}</h3>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-animate hover:text-brand-gold transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -66,13 +66,13 @@ export default function Footer() {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Folgen Sie uns</h3>
+            <h3 className="text-lg font-semibold mb-4 underline-gold">Folgen Sie uns</h3>
             <div className="flex gap-4">
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-animate hover:text-brand-gold transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@ export default function Footer() {
                 href={SOCIAL_LINKS.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-animate hover:text-brand-gold transition-colors"
                 aria-label="TikTok"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-[rgba(205,163,73,0.25)] mt-8 pt-8 text-center text-animate text-brand-cream/80">
           <p>
             © {currentYear} <strong>{COMPANY_INFO.name}</strong>. {translations.footer.copyright}
           </p>
@@ -104,4 +104,3 @@ export default function Footer() {
     </footer>
   );
 }
-

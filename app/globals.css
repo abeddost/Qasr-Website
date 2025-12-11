@@ -3,21 +3,83 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f7f1e6;
+  --foreground: #1c150f;
+  --brand-gold: #cda349;
+  --brand-gold-dark: #b88728;
+  --brand-charcoal: #19120c;
+  --brand-cream: #efe3d0;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .btn-gold {
+    @apply inline-block rounded-md font-semibold transition-all shadow-sm;
+    background: linear-gradient(90deg, var(--brand-gold), #ddbd67);
+    color: #1a1410;
+  }
+
+  .btn-gold:hover {
+    background: linear-gradient(90deg, var(--brand-gold-dark), #d2ad4e);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .pill-gold {
+    @apply inline-block rounded-md border px-6 py-2 transition-colors;
+    border-color: rgba(205, 163, 73, 0.7);
+    color: var(--brand-charcoal);
+    background-color: rgba(205, 163, 73, 0.08);
+  }
+
+  .pill-gold:hover {
+    background-color: rgba(205, 163, 73, 0.16);
+    border-color: var(--brand-gold-dark);
+    color: var(--brand-gold-dark);
+  }
+
+  .text-animate {
+    @apply transition-all duration-300;
+  }
+
+  .text-animate:hover {
+    color: var(--brand-gold);
+    transform: translateY(-3px);
+    letter-spacing: 0.015em;
+  }
+
+  .underline-gold {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+  }
+
+  .underline-gold::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-gold-dark));
+    transition: width 0.3s ease, transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .underline-gold:hover {
+    color: var(--brand-gold);
+  }
+
+  .underline-gold:hover::after {
+    width: 100%;
+    transform: translateY(1px);
+  }
 }
 
 @layer utilities {
@@ -148,4 +210,3 @@ body {
 .fade-in-on-scroll {
   animation: fadeInOnScroll 0.8s ease-out forwards;
 }
-

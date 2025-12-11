@@ -26,7 +26,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
   return (
     <div className="w-full">
       {/* Main Image */}
-      <div className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] mb-4 bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative w-full min-h-[320px] sm:min-h-[420px] md:min-h-[520px] lg:min-h-[640px] mb-4 bg-brand-cream rounded-lg overflow-hidden shadow-sm">
         <Image
           src={images[selectedImageIndex]}
           alt={`${productName} - Bild ${selectedImageIndex + 1}`}
@@ -41,11 +41,11 @@ export default function ProductImageGallery({ images, productName }: ProductImag
           <>
             <button
               onClick={handlePrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-colors z-10"
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full p-2 shadow-md transition-colors z-10"
               aria-label="Vorheriges Bild"
             >
               <svg
-                className="w-6 h-6 text-gray-900"
+                className="w-5 h-5 text-brand-charcoal"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -60,11 +60,11 @@ export default function ProductImageGallery({ images, productName }: ProductImag
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-colors z-10"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full p-2 shadow-md transition-colors z-10"
               aria-label="Nächstes Bild"
             >
               <svg
-                className="w-6 h-6 text-gray-900"
+                className="w-5 h-5 text-brand-charcoal"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
 
         {/* Image Counter */}
         {images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm">
             {selectedImageIndex + 1} / {images.length}
           </div>
         )}
@@ -95,10 +95,10 @@ export default function ProductImageGallery({ images, productName }: ProductImag
             <button
               key={index}
               onClick={() => handleThumbnailClick(index)}
-              className={`relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
+              className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden border-2 transition-all ${
                 selectedImageIndex === index
-                  ? "border-gray-900 ring-2 ring-gray-900"
-                  : "border-gray-300 hover:border-gray-500"
+                  ? "border-brand-gold ring-2 ring-brand-gold"
+                  : "border-[rgba(25,18,12,0.25)] hover:border-brand-gold"
               }`}
             >
               <Image
@@ -114,4 +114,3 @@ export default function ProductImageGallery({ images, productName }: ProductImag
     </div>
   );
 }
-

@@ -13,13 +13,13 @@ export default function ProductTabs({ fullDescription, additionalInfo }: Product
   return (
     <div className="mb-8">
       {/* Tabs Navigation */}
-      <div className="flex border-b border-gray-300 mb-6">
+      <div className="flex border-b border-[rgba(205,163,73,0.35)] mb-6">
         <button
           onClick={() => setActiveTab("explanation")}
-          className={`px-6 py-3 font-medium transition-colors ${
+          className={`px-6 py-3 font-semibold transition-all text-animate ${
             activeTab === "explanation"
-              ? "text-gray-900 border-b-2 border-amber-700"
-              : "text-gray-600 hover:text-gray-900"
+              ? "text-brand-charcoal border-b-2 border-brand-gold"
+              : "text-brand-charcoal/70 hover:text-brand-gold"
           }`}
         >
           ERKLÄRUNG
@@ -27,10 +27,10 @@ export default function ProductTabs({ fullDescription, additionalInfo }: Product
         {additionalInfo && (
           <button
             onClick={() => setActiveTab("additional")}
-            className={`px-6 py-3 font-medium transition-colors ${
+            className={`px-6 py-3 font-semibold transition-all text-animate ${
               activeTab === "additional"
-                ? "text-gray-900 border-b-2 border-amber-700"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-brand-charcoal border-b-2 border-brand-gold"
+                : "text-brand-charcoal/70 hover:text-brand-gold"
             }`}
           >
             ZUSÄTZLICHE INFORMATIONEN
@@ -41,12 +41,12 @@ export default function ProductTabs({ fullDescription, additionalInfo }: Product
       {/* Tab Content */}
       <div className="min-h-[200px]">
         {activeTab === "explanation" && (
-          <div className="text-gray-700 leading-relaxed">
+          <div className="text-brand-charcoal/80 leading-relaxed text-animate">
             {fullDescription}
           </div>
         )}
         {activeTab === "additional" && additionalInfo && (
-          <div className="text-gray-700 leading-relaxed">
+          <div className="text-brand-charcoal/80 leading-relaxed text-animate">
             {additionalInfo}
           </div>
         )}
@@ -54,4 +54,3 @@ export default function ProductTabs({ fullDescription, additionalInfo }: Product
     </div>
   );
 }
-

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { COMPANY_INFO, SOCIAL_LINKS } from "@/lib/constants";
@@ -16,25 +16,36 @@ export default function Header() {
     { href: "/kontakt", label: translations.nav.contact },
   ];
 
+  // Prevent body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [mobileMenuOpen]);
+
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-gray-900 text-white py-2 px-4">
-        <div className="container mx-auto flex justify-between items-center text-sm">
+      <div className="bg-brand-charcoal text-[var(--brand-cream)] py-2 px-4 border-b border-[rgba(205,163,73,0.35)]">
+        <div className="container mx-auto flex justify-between items-center text-sm font-medium">
           <div className="flex items-center gap-4">
-            <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-gray-300 transition-colors">
+            <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-brand-gold transition-colors">
               {COMPANY_INFO.phone}
             </a>
-            <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-gray-300 transition-colors">
+            <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-brand-gold transition-colors">
               {COMPANY_INFO.email}
             </a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 text-brand-gold">
             <a
               href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-white transition-colors"
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -45,7 +56,7 @@ export default function Header() {
               href={SOCIAL_LINKS.tiktok}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-white transition-colors"
               aria-label="TikTok"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -57,19 +68,30 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <header className="bg-white shadow-md sticky top-0 z-40">
+      <header className="bg-white/95 backdrop-blur shadow-md border-b border-[rgba(205,163,73,0.25)] sticky top-0 z-40">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt={COMPANY_INFO.name}
-                width={150}
-                height={60}
-                className="h-12 w-auto object-contain"
-                priority
-              />
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/logo.png"
+                  alt={`${COMPANY_INFO.name} Logo Mark`}
+                  width={72}
+                  height={48}
+                  className="h-12 w-auto object-contain"
+                  priority
+                />
+                <Image
+                  src="/2.png"
+                  alt={`${COMPANY_INFO.name} Logo Text`}
+                  width={180}
+                  height={72}
+                  className="w-auto object-contain"
+                  style={{ height: "4.5rem" }}
+                  priority
+                />
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -78,7 +100,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-gray-800 hover:text-gray-600 font-medium transition-colors"
+                  className="text-brand-charcoal hover:text-brand-gold font-medium text-animate"
                 >
                   {item.label}
                 </Link>
@@ -87,9 +109,10 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-gray-800"
+              className="md:hidden p-2 text-brand-charcoal hover:text-brand-gold transition-colors z-50 relative"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               <svg
                 className="w-6 h-6"
@@ -116,28 +139,61 @@ export default function Header() {
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`md:hidden fixed inset-0 z-[100] overflow-hidden ${
+          mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* Overlay Backdrop */}
         <div
-          className={`md:hidden fixed inset-0 bg-white z-50 transform transition-transform duration-300 ${
-            mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100" : "opacity-0"
           }`}
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+        
+        {/* Drawer Panel */}
+        <div
+          className={`absolute left-0 top-0 h-full w-[85vw] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${
+            mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          } flex flex-col`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
         >
-          <div className="flex flex-col p-8 pt-24">
-            {navItems.map((item) => (
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(205,163,73,0.25)] bg-white flex-shrink-0">
+            <span className="text-sm font-semibold tracking-[0.1em] text-brand-gold uppercase">Menü</span>
+            <button
+              aria-label="Schließen"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 text-brand-charcoal hover:text-brand-gold hover:bg-brand-cream/30 rounded-md transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Navigation Links */}
+          <nav className="flex-1 overflow-y-auto flex flex-col py-2">
+            {navItems.map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-2xl font-medium text-gray-800 py-4 border-b border-gray-200"
+                className="px-6 py-4 text-lg font-semibold text-brand-charcoal uppercase tracking-wide border-b border-[rgba(25,18,12,0.08)] hover:bg-brand-cream/60 active:bg-brand-cream/80 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
-      </header>
+      </div>
     </>
   );
 }
-

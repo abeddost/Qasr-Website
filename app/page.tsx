@@ -20,34 +20,34 @@ export default function Home() {
       <HeroSlider />
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-brand-cream">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ScrollAnimation animationType="fadeInUp" delay={0}>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-gray-400 mb-2">01.</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <div className="text-center group bg-white/70 border border-[rgba(205,163,73,0.25)] rounded-xl p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="text-4xl font-bold text-brand-gold mb-2 text-animate">01.</div>
+                <h3 className="text-xl font-semibold text-brand-charcoal mb-4 underline-gold">
                   {translations.features.title1}
                 </h3>
-                <p className="text-gray-600">{translations.features.description1}</p>
+                <p className="text-brand-charcoal/80 text-animate">{translations.features.description1}</p>
               </div>
             </ScrollAnimation>
             <ScrollAnimation animationType="fadeInUp" delay={100}>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-gray-400 mb-2">02.</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <div className="text-center group bg-white/70 border border-[rgba(205,163,73,0.25)] rounded-xl p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="text-4xl font-bold text-brand-gold mb-2 text-animate">02.</div>
+                <h3 className="text-xl font-semibold text-brand-charcoal mb-4 underline-gold">
                   {translations.features.title2}
                 </h3>
-                <p className="text-gray-600">{translations.features.description2}</p>
+                <p className="text-brand-charcoal/80 text-animate">{translations.features.description2}</p>
               </div>
             </ScrollAnimation>
             <ScrollAnimation animationType="fadeInUp" delay={200}>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-gray-400 mb-2">03.</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <div className="text-center group bg-white/70 border border-[rgba(205,163,73,0.25)] rounded-xl p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="text-4xl font-bold text-brand-gold mb-2 text-animate">03.</div>
+                <h3 className="text-xl font-semibold text-brand-charcoal mb-4 underline-gold">
                   {translations.features.title3}
                 </h3>
-                <p className="text-gray-600">{translations.features.description3}</p>
+                <p className="text-brand-charcoal/80 text-animate">{translations.features.description3}</p>
               </div>
             </ScrollAnimation>
           </div>
@@ -59,26 +59,28 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <ScrollAnimation animationType="fadeInUp">
             <div className="text-center mb-12">
-              <p className="text-sm font-semibold text-gray-700 mb-2">
+              <p className="text-sm font-semibold text-brand-gold mb-2 tracking-[0.08em] uppercase text-animate">
                 {translations.collections.title}
               </p>
-              <p className="text-gray-600 mb-8">{translations.collections.subtitle}</p>
+              <p className="text-brand-charcoal/80 mb-8 text-animate underline-gold">
+                {translations.collections.subtitle}
+              </p>
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <a
                   href="/kollektionen?category=modern"
-                  className="px-6 py-2 border-2 border-gray-300 rounded-md hover:border-gray-900 transition-colors"
+                  className="pill-gold text-animate"
                 >
                   {translations.collections.modernGroups}
                 </a>
                 <a
                   href="/kollektionen?category=luxury"
-                  className="px-6 py-2 border-2 border-gray-300 rounded-md hover:border-gray-900 transition-colors"
+                  className="pill-gold text-animate"
                 >
                   {translations.collections.luxuryGroups}
                 </a>
                 <a
                   href="/kollektionen?category=corner"
-                  className="px-6 py-2 border-2 border-gray-300 rounded-md hover:border-gray-900 transition-colors"
+                  className="pill-gold text-animate"
                 >
                   {translations.collections.cornerSofas}
                 </a>
@@ -93,7 +95,7 @@ export default function Home() {
 
       {/* Featured Product Section */}
       {avanosProduct && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-brand-cream">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <ScrollAnimation animationType="fadeInLeft">
@@ -107,17 +109,17 @@ export default function Home() {
                 </div>
               </ScrollAnimation>
               <ScrollAnimation animationType="fadeInRight" delay={200}>
-                <div>
-                  <p className="text-sm text-gray-500 mb-2">AVANOS SOFA SET</p>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="bg-white/80 p-8 rounded-xl border border-[rgba(205,163,73,0.25)] shadow-sm">
+                  <p className="text-sm text-brand-gold mb-2 tracking-[0.15em] text-animate">AVANOS SOFA SET</p>
+                  <h3 className="text-2xl font-bold text-brand-charcoal mb-4 underline-gold">
                     Luxuriöser Komfort, opulentes Design
                   </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-brand-charcoal/80 mb-6 leading-relaxed text-animate">
                     {avanosProduct.description}
                   </p>
                   <a
                     href={avanosProduct.href}
-                    className="inline-block bg-gray-900 text-white px-8 py-3 rounded-md font-semibold hover:bg-gray-800 transition-colors"
+                    className="btn-gold px-8 py-3 text-animate"
                   >
                     DETAILS
                   </a>
@@ -130,4 +132,3 @@ export default function Home() {
     </div>
   );
 }
-
