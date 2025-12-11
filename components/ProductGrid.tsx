@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  image: string;
-  href: string;
-}
+import type { Product } from "@/lib/products";
 
 interface ProductGridProps {
   products: Product[];
@@ -22,7 +15,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
           href={product.href}
           className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
         >
-          <div className="relative h-64 w-full overflow-hidden">
+          <div className="relative h-48 w-full overflow-hidden">
             <Image
               src={product.image}
               alt={product.name}

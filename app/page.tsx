@@ -4,38 +4,20 @@ import HeroSlider from "@/components/HeroSlider";
 import ProductGrid from "@/components/ProductGrid";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { translations } from "@/lib/translations";
+import { getAllProducts, getProductBySlug } from "@/lib/products";
 import Image from "next/image";
 
+// Get featured products from centralized data
+const allProducts = getAllProducts();
 const featuredProducts = [
-  {
-    id: "1",
-    name: "Angel Sofa Set",
-    category: "Moderne Gruppen",
-    image: "https://cassalini.com/wp-content/uploads/2021/09/CASALLINI08-1-scaled.webp",
-    href: "/kollektionen/angel",
-  },
-  {
-    id: "2",
-    name: "Efes Sofa Set",
-    category: "Moderne Gruppen",
-    image: "https://cassalini.com/wp-content/uploads/2021/09/CASALLINI08-1-scaled.webp",
-    href: "/kollektionen/efes",
-  },
-  {
-    id: "3",
-    name: "Lucas Sofa Set",
-    category: "Moderne Gruppen",
-    image: "https://cassalini.com/wp-content/uploads/2021/09/CASALLINI08-1-scaled.webp",
-    href: "/kollektionen/lucas",
-  },
-  {
-    id: "4",
-    name: "Luna Sofa Set",
-    category: "Moderne Gruppen",
-    image: "https://cassalini.com/wp-content/uploads/2021/09/CASALLINI08-1-scaled.webp",
-    href: "/kollektionen/luna",
-  },
-];
+  allProducts.find((p) => p.slug === "angel"),
+  allProducts.find((p) => p.slug === "efes"),
+  allProducts.find((p) => p.slug === "lucas"),
+  allProducts.find((p) => p.slug === "luna"),
+].filter((p) => p !== undefined) as typeof allProducts;
+
+// Get Avanos product for featured section
+const avanosProduct = getProductBySlug("avanos");
 
 export default function Home() {
   return (
@@ -158,43 +140,41 @@ export default function Home() {
       </section>
 
       {/* Featured Product Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <ScrollAnimation animationType="fadeInLeft">
-              <div className="relative h-96 w-full">
-                <Image
-                  src="https://cassalini.com/wp-content/uploads/2021/09/CASALLINI08-1-scaled.webp"
-                  alt="Pablo Ecksofa"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation animationType="fadeInRight" delay={200}>
-              <div>
-                <p className="text-sm text-gray-500 mb-2">PABLO ECKSOFA</p>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Modernes Design, überlegener Komfort
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  Das exklusive <strong>Pablo Ecksofa</strong> von Qasr Möbelhaus bringt Eleganz
-                  und Komfort in Ihre Wohnräume mit seinen modernen Linien und großzügigem
-                  Sitzbereich. Sein weich strukturierter Stoff, stabiler Rahmen und funktionales
-                  Design bieten sowohl Ästhetik als auch Langlebigkeit. Perfekt für minimalistische
-                  Dekorationsstile geeignet, ist Pablo bereit, zum Starstück Ihres Zuhauses zu werden.
-                </p>
-                <a
-                  href="/kollektionen/pablo"
-                  className="inline-block bg-gray-900 text-white px-8 py-3 rounded-md font-semibold hover:bg-gray-800 transition-colors"
-                >
-                  DETAILS
-                </a>
-              </div>
-            </ScrollAnimation>
+      {avanosProduct && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <ScrollAnimation animationType="fadeInLeft">
+                <div className="relative h-96 w-full">
+                  <Image
+                    src={avanosProduct.images[0]}
+                    alt="Avanos Sofa Set"
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+              </ScrollAnimation>
+              <ScrollAnimation animationType="fadeInRight" delay={200}>
+                <div>
+                  <p className="text-sm text-gray-500 mb-2">AVANOS SOFA SET</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    Luxuriöser Komfort, opulentes Design
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {avanosProduct.description}
+                  </p>
+                  <a
+                    href={avanosProduct.href}
+                    className="inline-block bg-gray-900 text-white px-8 py-3 rounded-md font-semibold hover:bg-gray-800 transition-colors"
+                  >
+                    DETAILS
+                  </a>
+                </div>
+              </ScrollAnimation>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }
