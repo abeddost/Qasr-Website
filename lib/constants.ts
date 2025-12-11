@@ -1,7 +1,7 @@
 export const COMPANY_INFO = {
   name: "Qasr Möbelhaus",
   address: "Industriestraße 17, 65474 Bischofsheim",
-  phone: "+49 176 83016753",
+  phone: "004917616210343",
   email: "qasrmobelhaus7@gmail.com",
   city: "Bischofsheim",
   postalCode: "65474",
@@ -18,4 +18,3 @@ export const GOOGLE_MAPS_CONFIG = {
   lat: 50.0000, // Approximate coordinates for Bischofsheim - update with exact location
   lng: 8.3000,  // Approximate coordinates for Bischofsheim - update with exact location
 } as const;
-
