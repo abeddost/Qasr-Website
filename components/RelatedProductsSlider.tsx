@@ -182,7 +182,7 @@ export default function RelatedProductsSlider({ products }: RelatedProductsSlide
                   href={product.href}
                   className="group block bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-xl transition-all border border-[rgba(205,163,73,0.25)]"
                 >
-                  <div className="relative h-64 md:h-72 w-full overflow-hidden bg-brand-cream">
+                  <div className="relative w-full overflow-hidden bg-brand-cream aspect-[4/3] md:aspect-[3/2]">
                     {/* Default Image */}
                     <Image
                       src={product.image}

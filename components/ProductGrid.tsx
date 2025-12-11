@@ -20,13 +20,13 @@ export default function ProductGrid({ products }: ProductGridProps) {
             href={product.href}
             className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all border border-[rgba(205,163,73,0.25)]"
           >
-            <div className="relative h-48 w-full overflow-hidden bg-brand-cream">
+            <div className="relative w-full overflow-hidden bg-brand-cream aspect-[4/3] md:aspect-[3/2]">
               {/* Default Image */}
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                className="object-cover group-hover:opacity-0 transition-opacity duration-300"
+                className="object-contain group-hover:opacity-0 transition-opacity duration-300"
               />
               {/* Hover Image */}
               {product.images.length > 1 && (
@@ -34,7 +34,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                   src={hoverImage}
                   alt={`${product.name} - Ansicht 2`}
                   fill
-                  className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0"
+                  className="object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0"
                 />
               )}
             </div>
@@ -42,7 +42,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
               <h3 className="text-xl font-semibold text-brand-charcoal mb-2 underline-gold text-animate">
                 {product.name}
               </h3>
-              <span className="text-sm text-brand-charcoal/70 text-animate">{product.category}</span>
+              <span className="block text-sm text-brand-charcoal/70 text-animate">{product.category}</span>
             </div>
           </Link>
         );
