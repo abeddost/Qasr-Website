@@ -1,3 +1,4 @@
+import DesignerCredit from "@/components/DesignerCredit";
 import Link from "next/link";
 import Image from "next/image";
 import { COMPANY_INFO, SOCIAL_LINKS } from "@/lib/constants";
@@ -99,6 +100,9 @@ export default function Footer() {
           <p>
             © {currentYear} <strong>{COMPANY_INFO.name}</strong>. {translations.footer.copyright}
           </p>
+          <div className="mt-4 flex justify-center">
+            <DesignerCredit site="qasr" />
+          </div>
         </div>
       </div>
     </footer>
